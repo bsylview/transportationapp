@@ -1,0 +1,52 @@
+
+<% _.each(connections, function(connection, key) { %>
+<div class="well col-md-6 col-md-offset-3">
+      <section id="Steps" class=" steps-section">
+           <div class="row bs-wizard" style="border-bottom:0;">
+                    <div class="col-xs-3 bs-wizard-step complete">
+                      <div class="text-center bs-wizard-stepnum"><%- connection.departureTime %></div>
+                      <div class="progress"><div class="progress-bar"></div></div>
+                      <p class="bs-wizard-dot"></p>
+                      <div class="bs-wizard-info text-center"><%- connection.departureStation %></div>
+                    </div>
+
+                    <div class="col-xs-6 bs-wizard-step complete">
+                        <div class="text-center bs-wizard-stepnum"><%- connection.duration %> </div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <div class="bs-wizard-info text-center"><%- connection.train %></div>
+                    </div>
+
+                    <div class="col-xs-3 bs-wizard-step complete">
+                      <div class="text-center bs-wizard-stepnum"><%- connection.destinationTime%></div>
+                      <div class="progress"><div class="progress-bar"></div></div>
+                      <p class="bs-wizard-dot"></p>
+                      <div class="bs-wizard-info text-center"><%- connection.destinationStation %></div>
+                    </div>
+                </div>
+
+              <% if (connection.stations.length > 1){ %>
+              <table>
+                    <thead>
+                          <tr>
+                            <th>Time</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Train</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% _.each(connection.stations, function(station, key) { %>
+                              <tr style="background:blue color:white">
+                               <td data-th="Time"><%- station.departureTime %></td>
+                               <td data-th="From"><%- station.departureStation %> </td>
+                               <td data-th="To"><%- station.destinationStation %></td>
+                               <td data-th="Train"><%- station.train %></td>
+                             </tr>
+                          <% }); %>
+                      </tbody>
+                </table>
+                <% }; %>
+      </section>
+
+</div>
+<% }); %>
